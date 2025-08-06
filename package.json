@@ -1,9 +1,10 @@
 {
-    "name": "transport",
+    "name": "wi-transport",
     "version": "1.0.0",
     "main": "./dist/index.js",
     "types": "./types/index.d.ts",
     "type": "module",
+    "private": false,
     "files": [
         "dist",
         "types",
