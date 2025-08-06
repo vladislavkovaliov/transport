@@ -5,7 +5,20 @@ import prettierConfig from "eslint-config-prettier";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist"] },
+  { ignores: [
+    "dist",
+    ".idea",
+    ".storybook",
+    ".config",
+    "node_modules/*",
+    "config/*",
+    "public/*",
+    "scripts/*",
+    "src/react-app-env.d.ts",
+    "src/reportWebVitals.ts",
+    "vite.config.ts",
+    "stats"
+  ] },
   {
     extends: [
       js.configs.recommended,
@@ -22,11 +35,12 @@ export default tseslint.config(
     },
     rules: {
       "@typescript-eslint/no-empty-object-type": "off",
-      indent: ["error", 4, { SwitchCase: 1 }],
       "linebreak-style": ["error", "unix"],
-      quotes: ["error", "double"],
       semi: ["error", "always"],
       "prettier/prettier": "error",
+      "@typescript-eslint/ban-ts-comment": "warn",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unsafe-function-type": "warn",
     },
   },
 );

@@ -1,13 +1,23 @@
 {
     "name": "transport",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "./dist/index.js",
+    "types": "./types/index.d.ts",
+    "type": "module",
+    "files": [
+        "dist",
+        "types",
+        "LICENSE",
+        "README.md"
+    ],
     "scripts": {
+        "build": "rm -rf dist && rm -rf types && tsc",
         "commit": "git-cz",
-        "prepare": "husky",
+        "prepare": "npm run build",
+        "test": "./node_modules/.bin/vitest ./src --run --maxConcurrency 1",
         "lint": "eslint .",
-        "format": "prettier --write src/**/*.ts",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "semantic-release": "semantic-release",
+        "format": "prettier --write src/**/*.ts"
     },
     "repository": {
         "type": "git",
@@ -15,8 +25,7 @@
     },
     "lint-staged": {
         "*.{ts,tsx}": [
-            "npm run lint",
-            "npm run format"
+            "npm run lint"
         ]
     },
     "config": {
@@ -24,14 +33,31 @@
             "path": "./node_modules/cz-conventional-changelog"
         }
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "author": "Vlad (v.v.kovaliov@gmail.com)",
+    "license": "MIT",
+    "keywords": [
+        "rxjs",
+        "transport"
+    ],
     "bugs": {
         "url": "https://github.com/vladislavkovaliov/transport/issues"
     },
     "homepage": "https://github.com/vladislavkovaliov/transport#readme",
     "description": "",
+    "release": {
+        "branches": [
+            "main"
+        ],
+        "plugins": [
+            [
+                "@semantic-release/npm",
+                {
+                    "npmPublish": true
+                }
+            ],
+            "@semantic-release/github"
+        ]
+    },
     "devDependencies": {
         "commitizen": "^4.3.1",
         "cz-conventional-changelog": "^3.3.0",
@@ -42,7 +68,11 @@
         "husky": "^9.1.7",
         "lint-staged": "^16.1.2",
         "prettier": "^3.6.2",
+        "rxjs": "^7.8.2",
+        "semantic-release": "^24.2.6",
+        "ts-node": "^10.9.2",
         "typescript": "^5.8.3",
-        "typescript-eslint": "^8.38.0"
+        "typescript-eslint": "^8.38.0",
+        "vitest": "^3.2.4"
     }
 }
