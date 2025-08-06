@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "main": "./dist/index.js",
     "types": "./types/index.d.ts",
-    "type": "module",
     "private": false,
     "files": [
         "dist",
@@ -75,5 +74,8 @@
         "typescript": "^5.8.3",
         "typescript-eslint": "^8.38.0",
         "vitest": "^3.2.4"
+    },
+    "dependencies": {
+        "ws": "^8.18.3"
     }
 }
