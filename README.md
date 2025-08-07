@@ -19,6 +19,11 @@ npm install
 
 ## 🚀 Getting Started
 
+The main purpose is to store message into queue if the connection is down and when the one's established to continue messaging.
+
+Straightforward base transport entry that can be extented by any requirements.
+For instance, already implemented WebSocketTransport that provides RxJs API to obtain messages in duplex direction of communition.
+
 ```typescript
 const transport = new WebSocketTransport('wss://yourserver.example');
 
@@ -32,14 +37,6 @@ transport.connect(); // Establish connection
 
 ```typescript
 transport.send({ type: 'ping', payload: { id: 123 } });
-```
-
-### Listen for Messages
-
-```typescript
-transport.onType('pong').subscribe(msg => {
-  console.log('Got pong!', msg.payload);
-});
 ```
 
 ### 📬 `onMessage` — Receive All Incoming Messages
@@ -101,11 +98,13 @@ transport.use((msg, dir) => {
 
 ## 🧭 Lifecycle
 
+The easiest way to control connection via API.
+
 ```typescript
 transport.start();      // Enables the transport lifecycle
-transport.pause();      // Pauses reception (still buffers)
+transport.pause();      // Pauses reception (still have buffers)
 transport.resume();     // Resumes reception
-transport.disconnect(); //
+transport.disconnect(); // Dissconect connection
 ```
 
 ## 🧪 Testing
