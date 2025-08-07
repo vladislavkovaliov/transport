@@ -9,10 +9,7 @@ export declare abstract class BaseTransport implements ITransport {
     protected isPaused: boolean;
     protected connectionSubcribtion: Subscription | null;
     protected sendFunction: (message: IMessage) => void;
-    protected applyMiddleware(
-        message: IMessage,
-        direction: "in" | "out",
-    ): IMessage | null;
+    protected applyMiddleware(message: IMessage, direction: "in" | "out"): IMessage | null;
     start(): void;
     pause(): void;
     stop(): void;
@@ -22,15 +19,11 @@ export declare abstract class BaseTransport implements ITransport {
     send(message: IMessage): void;
     receive(msg: IMessage): void;
     onMessage(): Observable<IMessage>;
-    onType<T = any>(
-        type: string,
-    ): Observable<{
+    onType<T = any>(type: string): Observable<{
         type: string;
         payload: T;
     }>;
-    onTypes<T = any>(
-        types: string[],
-    ): Observable<{
+    onTypes<T = any>(types: string[]): Observable<{
         type: string;
         payload: T;
     }>;

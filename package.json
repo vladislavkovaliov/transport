@@ -59,6 +59,7 @@
         ]
     },
     "devDependencies": {
+        "@types/ws": "^8.18.1",
         "commitizen": "^4.3.1",
         "cz-conventional-changelog": "^3.3.0",
         "eslint": "^9.32.0",
@@ -68,7 +69,6 @@
         "husky": "^9.1.7",
         "lint-staged": "^16.1.2",
         "prettier": "^3.6.2",
-        "rxjs": "^7.8.2",
         "semantic-release": "^24.2.6",
         "ts-node": "^10.9.2",
         "typescript": "^5.8.3",
@@ -76,6 +76,7 @@
         "vitest": "^3.2.4"
     },
     "dependencies": {
-        "ws": "^8.18.3"
+        "ws": "^8.18.3",
+        "rxjs": "^7.8.2"
     }
 }
